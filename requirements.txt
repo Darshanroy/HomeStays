@@ -1,0 +1,8 @@
+pandas
+scikit-learn
+catboost
+zenml
+numpy
+lightgbm
+xgboost
+evidently
