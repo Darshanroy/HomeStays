@@ -24,6 +24,7 @@ logger = get_logger(__name__)
 
 @step(enable_cache=True)
 def model_trainer(model_types: List[str], dataset_trn: pd.DataFrame, target: str) -> dict:
+    logger.info(f"{dataset_trn.columns}")
     trained_models = {}
     # Create directory if it doesn't exist
     if not os.path.exists("trained_models"):

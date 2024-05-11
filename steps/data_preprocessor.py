@@ -15,39 +15,18 @@ from steps.data_loader import data_loader
 from steps.data_splitter import data_splitter
 logging = get_logger(__name__)
 import os
+import pickle
 
 import pandas as pd
 from sqlalchemy import create_engine
 
 from evidently.ui.workspace.cloud import CloudWorkspace
 from evidently.report import Report
-from evidently.metric_preset import DataQualityPreset
+
 
 ws = CloudWorkspace(token="dG9rbgHfd9TQMR1Mup4FnQPNmSJvQWvx7bmkvNLrLykS7wUcQwBQBxqDUNqQFT5kU07Oay7bwHNA5dH0To93wCHYuaGwFD09qdYPd1/BGYbdB/sMHR7K8veKFlPczNvT2Z6aPdkUog4Kb83dFezC9VqCaL1tk9pL29C6", url="https://app.evidently.cloud")
 
 project = ws.get_project("0601979a-d2a7-4392-848f-62a6d9655df0")
-
-# Replace with your database connection details
-engine = create_engine("sqlite://", echo=True)
-
-# Table name
-table_name = 'Encoded_Data'
-
-def push_to_sql(df, engine, table_name):
-  """Pushes a DataFrame to a SQL table using SQLAlchemy.
-
-  Args:
-      df (pandas.DataFrame): The DataFrame to push.
-      engine (sqlalchemy.engine.Engine): The SQLAlchemy engine object.
-      table_name (str): The name of the table to create or insert into.
-  """
-
-  try:
-    # Check if table exists. If not, create it with appropriate data types.
-    df.to_sql(table_name, engine, if_exists='append', index=False)
-    print(f"Data successfully pushed to table '{table_name}'.")
-  except Exception as e:
-    print(f"Error pushing data to table: {e}")
 
 
 def count_amenities(amenities_str):
@@ -230,7 +209,7 @@ def data_preprocessor(
     df['first_review_month'] = df['first_review'].dt.month
 
     # Drop original datetime columns
-    df.drop(columns=['last_review', 'host_since', 'first_review'], inplace=True)
+    df.drop(columns=['last_review', 'host_since', 'first_review','name','neighbourhood_encoded'], inplace=True)
 
     # Drop unnecessary columns
     logging.info("Dropping unnecessary columns")
@@ -239,23 +218,19 @@ def data_preprocessor(
     # List of categorical columns to be label encoded
     logging.info("Listing categorical columns to be label encoded")
     categorical_columns = ['property_type', 'room_type', 'bed_type',
-                           'cancellation_policy', 'city', 'name',
+                           'cancellation_policy', 'city',
                            'host_has_profile_pic', 'host_identity_verified',
                            'instant_bookable', 'cleaning_fee']
 
     logging.info("Encoding categorical columns")
     encoded_df, label_encoders = label_encode_categorical_columns(df, categorical_columns)
+    logging.info(f"{encoded_df.columns}")
 
-    data_report = Report(
-        metrics=[
-            DataQualityPreset(),
-        ],
-    )
-    data_report.run(reference_data=None, current_data=encoded_df)
-    ws.add_report(project.id, data_report)
 
-    data_report.save_html("templates/file.html")
-    push_to_sql(encoded_df.copy(), engine, table_name)
+    # Assuming label_encoders is a dictionary of label encoders
+    # and you want to save it to a file named 'label_encoders.pkl'
+    with open('trained_label_encoder/label_encoders.pkl', 'wb') as f:
+        pickle.dump(label_encoders, f)
 
     return encoded_df
 

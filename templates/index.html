@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Stays</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap">
+    <style>
+        body {
+          padding: 50px; /* Adjust padding for content spacing */
+          background-color: black; /* Black background */
+          color: white; /* White text for better readability */
+        }
+        .container {
+          display: flex; /* Use flexbox for side-by-side arrangement */
+          flex-wrap: wrap; /* Allow boxes to wrap to next line if needed */
+          justify-content: center; /* Center boxes horizontally */
+        }
+        h1 {
+          font-size: 2.5rem; /* Increase title size */
+          margin-bottom: 20px;
+          text-align: center; /* Center title text */
+          font-family: 'Roboto Condensed', sans-serif; /* Use Roboto Condensed font */
+        }
+        .service-box {
+          border: 1px solid #ddd; /* Add border to each box */
+          padding: 15px; /* Reduce padding for smaller boxes */
+          border-radius: 5px; /* Add rounded corners to boxes */
+          margin: 10px; /* Add spacing between boxes */
+          background-color: #212121; /* Darker gray for boxes */
+          cursor: pointer; /* Add cursor pointer for clickable appearance */
+          width: 250px; /* Reduce width for smaller boxes */
+          height: 180px; /* Reduce height proportionally for square boxes */
+          display: flex; /* Use flexbox for centering content within boxes */
+          align-items: center; /* Center content vertically within boxes */
+          justify-content: center; /* Center content horizontally within boxes */
+          text-align: center; /* Center text within boxes */
+          font-family: 'Roboto Condensed', sans-serif; /* Use Roboto Condensed font */
+          text-decoration: none; /* Remove default underline for links */
+          color: white; /* Set text color to white */
+        }
+        .service-box:hover {
+          background-color: #333333; /* Slightly darken box on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>HOME STAYS</h1>
+
+    <div class="container">
+        <a href="/notebooks" class="service-box">
+            <h4>Documentation and Notebooks</h4>
+        </a>
+        <a href="/Monitoring" class="service-box">
+            <h4>Data Monitoring</h4>
+        </a>
+        <a href="/prediction" class="service-box">
+            <h4>Price Prediction</h4>
+        </a>
+        <a href="/service4" class="service-box">
+            <h4>Chatbot for Enquiry</h4>
+        </a>
+    </div>
+</body>
+</html>

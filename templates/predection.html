@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Input Form</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Add custom styles here if needed */
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Data Input Form</h2>
+        <form method="POST" action="/prediction">
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="room_type">Room Type:</label>
+                        <select class="form-control" id="room_type" name="room_type">
+                            <option value="Entire home/apt">Entire home/apt</option>
+                            <option value="Private room">Private room</option>
+                            <option value="Shared room">Shared room</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="accommodates">Accommodates:</label>
+                        <input type="number" class="form-control" id="accommodates" name="accommodates">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="bathrooms">Bathrooms:</label>
+                        <input type="number" class="form-control" id="bathrooms" name="bathrooms">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="city">City:</label>
+                        <select class="form-control" id="city" name="city">
+                            <option value="NYC">NYC</option>
+                            <option value="SF">SF</option>
+                            <option value="DC">DC</option>
+                            <option value="LA">LA</option>
+                            <option value="Chicago">Chicago</option>
+                            <option value="Boston">Boston</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="latitude">Latitude:</label>
+                        <input type="text" class="form-control" id="latitude" name="latitude">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="longitude">Longitude:</label>
+                        <input type="text" class="form-control" id="longitude" name="longitude">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="zipcode">Zipcode:</label>
+                        <input type="text" class="form-control" id="zipcode" name="zipcode">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="bedrooms">Bedrooms:</label>
+                        <input type="number" class="form-control" id="bedrooms" name="bedrooms">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="beds">Beds:</label>
+                        <input type="number" class="form-control" id="beds" name="beds">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="host_tenure">Host Tenure:</label>
+                        <input type="number" class="form-control" id="host_tenure" name="host_tenure">
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
