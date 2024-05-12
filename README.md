@@ -57,6 +57,13 @@ giving you valuable insights into what truly drives value. With Homestays, you c
    ```
 
    This script will likely take some time to complete depending on the size and complexity of your dataset. The training process might involve data preparation, model training, and evaluation.
+         
+3. **Run Python Application:**
+
+    ```bash               
+     python app.py   
+   ```                                        
+   This will run the python flask application
 
 4. **Run the application:**
 
