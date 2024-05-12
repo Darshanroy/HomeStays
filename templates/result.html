@@ -1,26 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Predicted Values</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        /* Add custom styles here if needed */
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Model Results</title>
+  <link href="https://cdn.jsdelivr.net/4.9.3/svgator.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evSXBKlOAaPTfdXK/sQHjEXvälpsgwJ5+OPVKLRQk9Qs+a7zWJBrvHr8fhDYeT" crossorigin="anonymous">
+  <style>
+    body {
+      background-color: black;
+      color: #778899; /* Light gray for text */
+      font-family: 'Open Sans', sans-serif; /* Font with good contrast */
+    }
+    .model-box {
+      margin: 10px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #333333; /* Darker background for boxes */
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle outline */
+    }
+    .model-name {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .model-output {
+      white-space: pre-wrap;
+    }
+    .btn-back {
+      margin-top: 10px;
+      background-color: #778899; /* Light gray for button background */
+      color: black; /* Black text for button */
+    }
+  </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <h2>Predicted Values</h2>
-        <ul>
-            {% for model, value in predictions.items() %}
-                <li><strong>{{ model }}:</strong> {{ value }}</li>
-            {% endfor %}
-        </ul>
-    </div>
+  <h1>Model Results</h1>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <div class="container">
+    <div class="row">
+
+      {% for model_name, model in predictions.items() %}
+      <div class="col-md-4">
+        <div class="model-box">
+          <h3 class="model-name">{{ model_name }}</h3>
+          <pre class="model-output">
+            {{ model | replace('[', '') | replace(']', '') }}  </pre>
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+    <div class="text-center">
+      <a href="/" class="btn btn-primary btn-back">Back to Home</a>
+    </div>
+  </div>
+
+  <div id="loading" style="display: none;">
+    <svg class="svgator" data-autoplay="true" data-src="path/to/your/loading_animation.svg"></svg>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/svgator@4.9.3/svgator.min.js"></script>
+  <script>
+    // Show loading animation before results are displayed (optional)
+    document.getElementById('loading').style.display = 'block';
+    setTimeout(function() {
+      document.getElementById('loading').style.display = 'none';
+    }, 2000); // Adjust timeout as needed
+  </script>
 </body>
 </html>

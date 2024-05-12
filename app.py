@@ -18,15 +18,15 @@ def load_models():
 
     with open('trained_models/catboost_model.pkl', 'rb') as f:
         catboost_model = pickle.load(f)
-    models['model1'] = catboost_model
+    models['catboost_model'] = catboost_model
 
     with open('trained_models/lgbm_model.pkl', 'rb') as f:
         lgbm_model = pickle.load(f)
-    models['model2'] = lgbm_model
+    models['lgbm_model'] = lgbm_model
 
     with open('trained_models/xgboost_model.pkl', 'rb') as f:
         xgboost_model = pickle.load(f)
-    models['model3'] = xgboost_model
+    models['xgboost_model'] = xgboost_model
 
     return models
 
